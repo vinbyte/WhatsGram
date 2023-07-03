@@ -53,14 +53,12 @@ const getSession = async (initClient) => {
         log("Session retrieved successfully! Initiating session...");
         sessionInDb = true;
         await new Promise((res) => setTimeout(res, 2000));
-        initClient();
-        return true;
       }
       log("No session found in database. Re initiating session...");
-      return false;
     } else {
       log("Initiating session...");
     }
+    initClient();
     return true;
   } catch (err) {
     log("Failed to get session from database");
